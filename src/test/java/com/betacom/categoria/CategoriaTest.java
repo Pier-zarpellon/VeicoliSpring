@@ -125,6 +125,25 @@ public class CategoriaTest {
 	
 	@Test
 	@Order(5)
+	public void createCategoriaTest5() throws Exception{
+		log.debug("createCategoriaTest5");
+		CategoriaReq req = new CategoriaReq();
+		
+		
+		req.setDescrizione("cruiser");
+		TipoVeicolo macchina = repTv.findById(3)
+		        .orElseThrow(() -> new RuntimeException("TipoVeicolo non trovato"));
+		req.setTipiVeicolo(List.of(macchina));
+		
+		mockMvc.perform(post("/rest/categoria/create")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(req))
+				).andExpect(status().isOk());
+		
+	}
+	
+	@Test
+	@Order(6)
 	public void deleteCategoria() throws Exception{
 		log.debug("deleteCategoria");
 		
