@@ -95,7 +95,7 @@ public class AlimentazioneTest {
 	}
 	
 	@Test
-	@Order(3)
+	@Order(4)
 	public void createAlimentazioneTest4() throws Exception{
 		log.debug("createAlimentazioneTest4");
 		AlimentazioneReq req = new AlimentazioneReq();
@@ -114,6 +114,26 @@ public class AlimentazioneTest {
 	
 	@Test
 	@Order(5)
+	public void createAlimentazioneTest5() throws Exception{
+		log.debug("createAlimentazioneTest5");
+		AlimentazioneReq req = new AlimentazioneReq();
+		req.setDescrizione("acqua");
+		
+		TipoVeicolo macchina = repTv.findById(3)
+		        .orElseThrow(() -> new RuntimeException("TipoVeicolo non trovato"));
+		req.setTipiVeicolo(List.of(macchina));
+		
+		mockMvc.perform(post("/rest/alimentazione/create")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(objectMapper.writeValueAsString(req))
+				).andExpect(status().isOk());
+		
+	}
+	
+	
+	
+	@Test
+	@Order(6)
 	public void deleteAlimentazione() throws Exception{
 		log.debug("deleteAlimentazione");
 		
