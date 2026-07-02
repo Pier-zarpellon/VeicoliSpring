@@ -39,7 +39,7 @@ public class MacchinaImpl implements IMacchinaServices {
 		    Macchina mc = new Macchina();
 		    mc.setVeicolo(v);
 		    mc.setNumeroPorte(req.getNumeroPorte());
-		    mc.setNumeroPorte(req.getNumeroRuote());
+		    mc.setNumeroRuote(req.getNumeroRuote());
             mc.setTarga(req.getTarga());
 		    mc.setCc(req.getCc());
 

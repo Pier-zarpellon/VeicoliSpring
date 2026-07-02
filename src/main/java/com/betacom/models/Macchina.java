@@ -38,6 +38,8 @@ public class Macchina {
     
     private Integer numeroPorte;
     
+    private Integer numeroRuote;
+    
     @OneToOne (cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "veicolo_id")
     private Veicolo veicolo;
