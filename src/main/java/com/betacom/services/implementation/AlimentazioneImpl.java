@@ -1,9 +1,13 @@
 package com.betacom.services.implementation;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.betacom.dto.input.AlimentazioneReq;
+import com.betacom.dto.output.AlimentazioneDTO;
 import com.betacom.exception.VeicoliException;
+import com.betacom.mapping.AlimentazioneMap;
 import com.betacom.models.Alimentazione;
 import com.betacom.repositories.IAlimentazioneRepositories;
 import com.betacom.services.interfaces.IAlimentazioneServices;
@@ -40,6 +44,12 @@ public class AlimentazioneImpl implements IAlimentazioneServices{
 		
 		Repalm.delete(alm);
 		
+	}
+
+	@Override
+	public List<AlimentazioneDTO> list() throws Exception {
+		List<Alimentazione> lA = Repalm.findAll();
+		return AlimentazioneMap.buildAlimentazioneDTOList(lA);
 	}
 
 }
