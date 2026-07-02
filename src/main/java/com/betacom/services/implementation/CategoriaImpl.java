@@ -1,9 +1,13 @@
 package com.betacom.services.implementation;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.betacom.dto.input.CategoriaReq;
+import com.betacom.dto.output.CategoriaDTO;
 import com.betacom.exception.VeicoliException;
+import com.betacom.mapping.CategoriaMap;
 import com.betacom.models.Categoria;
 import com.betacom.repositories.ICategoriaRepositories;
 import com.betacom.services.interfaces.ICategoriaServices;
@@ -37,6 +41,12 @@ public class CategoriaImpl implements ICategoriaServices{
 		
 		Repcat.delete(cat);
 		
+	}
+
+	@Override
+	public List<CategoriaDTO> list() throws Exception {
+		List<Categoria> lA = Repcat.findAll();
+		return CategoriaMap.buildCategoriaDTOList(lA);
 	}
 
 }

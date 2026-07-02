@@ -18,4 +18,4 @@ public class BiciMap {
                 .sospensioneId(b.getSospensione() == null ? null : b.getSospensione().getId())
                 .build();
     }
-	}
+}

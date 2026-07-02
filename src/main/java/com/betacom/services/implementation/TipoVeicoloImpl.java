@@ -1,9 +1,13 @@
 package com.betacom.services.implementation;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.betacom.dto.input.TipoVeicoloReq;
+import com.betacom.dto.output.TipoVeicoloDTO;
 import com.betacom.exception.VeicoliException;
+import com.betacom.mapping.TipoVeicoloMap;
 import com.betacom.models.TipoVeicolo;
 import com.betacom.repositories.ITipoVeicoloRepositories;
 import com.betacom.services.interfaces.ITipoVeicoloServices;
@@ -39,6 +43,12 @@ public class TipoVeicoloImpl implements ITipoVeicoloServices{
 		
 		Reptv.delete(tv);
 		
+	}
+
+	@Override
+	public List<TipoVeicoloDTO> list() throws Exception {
+		List<TipoVeicolo> lA = Reptv.findAll();
+		return TipoVeicoloMap.buildTipoVeicoloDTOList(lA);
 	}
 
 }
