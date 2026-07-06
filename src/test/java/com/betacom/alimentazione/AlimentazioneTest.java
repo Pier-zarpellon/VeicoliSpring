@@ -1,6 +1,7 @@
 package com.betacom.alimentazione;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -142,5 +143,13 @@ public class AlimentazioneTest {
 	            .andExpect(jsonPath("$.msg").exists());
 		  
 	}
+	
+	@Test
+    @Order(7)
+    public void testListVeicoli_AllParams() throws Exception {
+
+        mockMvc.perform(get("/rest/alimentazione/list"))
+        .andExpect(status().isOk());
+    }
 
 }
